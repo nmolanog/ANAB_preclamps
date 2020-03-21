@@ -69,3 +69,23 @@ z0[,cut_df$source]%>%summary
 z1<-cutvars(cut_df,z1)
 
 summary(z1)
+setdiff(colnames(z1),choix$var)
+new_choix<-data.frame(var=setdiff(colnames(z1),choix$var),type="f",outcome=NA)
+choix<-rbind(choix,new_choix)
+choix[choix$var %in% toaddoutcomes$var,"outcome"]<-1
+
+z0<-z1
+####final check
+colnames(z0)[!colnames(z0)%in% choix$var]
+
+tempcn<-data.frame(colnames(z0),choix$var,stringsAsFactors =F)
+tempcn%>%filter(colnames.z0.!=choix.var)
+
+choix$var<-colnames(z0)
+choix$var%>%table()->a
+a[a>1]  
+choix$type%>%table
+
+summary(z0)
+###exporting depurated data
+save(z0,choix,file=paste0("../data/Rdata","/","dep_data.RData"))
