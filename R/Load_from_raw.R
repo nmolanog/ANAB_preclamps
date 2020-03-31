@@ -13,7 +13,7 @@ oldir<-getwd()
 ####see available xlsx files to load
 list.files("../data/raw")%>%str_subset(".xlsx")
 ###asign the apropiate name file. without xlsx extencion
-file_nm<-"preclamsiasevera_19032020"
+file_nm<-"preclamsiasevera_30032020"
 ###load file
 wb <- paste0("../data/raw/",file_nm,".xlsx")
 getSheetNames(wb)

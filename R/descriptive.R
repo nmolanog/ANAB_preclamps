@@ -33,5 +33,5 @@ summary(z0[,d.vars])
 summary(z0[,vdep])
 
 setwd(output_path)
-autores(z0,d.vars,c.vars,vdep,xlsxname ="descr_v0",fldr_name="descr_v0")
+autores(z0,d.vars,c.vars,vdep,xlsxname ="descr_v1",fldr_name="descr_v1")
 setwd(ori_dir)
