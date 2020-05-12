@@ -33,5 +33,13 @@ summary(z0[,d.vars])
 summary(z0[,vdep])
 
 setwd(output_path)
-autores(z0,d.vars,c.vars,vdep,xlsxname ="descr_v1",fldr_name="descr_v1")
+autores(z0,d.vars,c.vars,vdep,xlsxname ="descr_v2",fldr_name="descr_v2")
 setwd(ori_dir)
+
+wb <- openxlsx::createWorkbook()
+openxlsx::addWorksheet(wb, sheetName = "data")
+openxlsx::writeData(wb,x=z0, sheet = "data")
+
+openxlsx::addWorksheet(wb, sheetName = "dictionary")
+openxlsx::writeData(wb,x=choix, sheet = "dictionary")
+openxlsx::saveWorkbook(wb,paste0(output_path,"/","datos_depurados.xlsx"),TRUE)

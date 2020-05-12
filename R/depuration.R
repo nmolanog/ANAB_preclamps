@@ -68,9 +68,17 @@ z0[,cut_df$source]%>%summary
 
 z1<-cutvars(cut_df,z1)
 
+z1$proteinuria_1<-NA
+z1$proteinuria_2<-NA
+z1$proteinuria_3<-NA
+
+z1[z1$met.prot %in% "1","proteinuria_1"]<-z1[z1$met.prot %in% "1","proteinuria"]
+z1[z1$met.prot %in% "2","proteinuria_2"]<-z1[z1$met.prot %in% "2","proteinuria"]
+z1[z1$met.prot %in% "3","proteinuria_3"]<-z1[z1$met.prot %in% "3","proteinuria"]
+
 summary(z1)
 setdiff(colnames(z1),choix$var)
-new_choix<-data.frame(var=setdiff(colnames(z1),choix$var),type="f",outcome=NA)
+new_choix<-data.frame(var=setdiff(colnames(z1),choix$var),type=c(rep("f",8),rep("c",3)),outcome=NA)
 choix<-rbind(choix,new_choix)
 choix[choix$var %in% toaddoutcomes$var,"outcome"]<-1
 
